@@ -11,11 +11,11 @@ module.exports = {
     html: '*(**/)*.sgr',
     css: '*(**/)*.sss'
   },
-  ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md'],
+  ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'data/**'],
   reshape: (ctx) => {
     return htmlStandards({
       webpack: ctx,
-      locals: { pageId: pageId(ctx), foo: 'bar', locals }
+      locals: Object.assign({ pageId: pageId(ctx) }, locals)
     })
   },
   plugins: [
@@ -31,6 +31,3 @@ module.exports = {
   babel: { presets: [jsStandards] },
   server: { open: false }
 }
-
-console.log(locals)
-
